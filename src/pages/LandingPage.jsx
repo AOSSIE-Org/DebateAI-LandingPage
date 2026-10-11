@@ -3,6 +3,7 @@ import DebateCarousel from '../components/DebateCarousel'
 import ConnectServerModal from '../components/ConnectServerModal'
 import SelfHostGuideModal from '../components/SelfHostGuideModal'
 import { FaPlay, FaLink, FaServer, FaArrowRight, FaCircleCheck } from 'react-icons/fa6'
+import { TRY_IT_OUT_URL } from '../lib/connect'
 
 export default function LandingPage() {
     const [isConnectModalOpen, setIsConnectModalOpen] = useState(false)
@@ -14,10 +15,6 @@ export default function LandingPage() {
             setConnectedServer(url.trim())
         }
         setIsConnectModalOpen(false)
-    }
-
-    const handleOfficialServerClick = () => {
-        window.location.href = 'https://debateai.aossie.org'
     }
 
     return (
@@ -57,11 +54,8 @@ export default function LandingPage() {
                     </div>
 
                     <div className="space-y-3.5">
-                        <div
-                            onClick={handleOfficialServerClick}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => e.key === 'Enter' && handleOfficialServerClick()}
+                        <a
+                            href={TRY_IT_OUT_URL}
                             className="group relative p-4 sm:p-5 rounded-sm border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 hover:shadow-lg hover:border-orange-500/50"
                             style={{
                                 backgroundColor: 'var(--surface)',
@@ -96,7 +90,7 @@ export default function LandingPage() {
                             <div className="w-9 h-9 rounded-sm flex items-center justify-center text-(--text2) border group-hover:text-white group-hover:border-(--brand-orange) transition-all duration-200 shrink-0">
                                 <FaArrowRight className="w-3.5 h-3.5 group-hover:text-(--brand-orange) transition-all duration-200 " />
                             </div>
-                        </div>
+                        </a>
 
                         <div
                             onClick={() => setIsConnectModalOpen(true)}
