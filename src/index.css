@@ -147,12 +147,11 @@ h1, .hero-headline {
 button {
   cursor: pointer;
   font-family: inherit;
-  background: transparent;
 }
 
 input, select, textarea {
   font-family: inherit;
-  color: inherit;
+  color: var(--text);
 }
 
 
