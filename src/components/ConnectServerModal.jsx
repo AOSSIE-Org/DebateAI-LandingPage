@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { FaArrowRight, FaCircleExclamation } from 'react-icons/fa6'
+import { connectToServer } from '../lib/connect'
 
 export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
   const [serverUrl, setServerUrl] = useState('')
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -20,6 +22,7 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
+      setError('')
     }
     return () => {
       document.body.style.overflow = ''
@@ -28,8 +31,20 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
 
   if (!isOpen) return null
 
+  const handleInputChange = (e) => {
+    setServerUrl(e.target.value)
+    if (error) {
+      setError('')
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (!serverUrl.trim()) return
+    if (!connectToServer(serverUrl)) {
+      setError('Enter a valid https:// URL')
+      return
+    }
     if (onConnect) {
       onConnect(serverUrl)
     }
@@ -85,10 +100,15 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
               id="backend-url"
               type="url"
               value={serverUrl}
-              onChange={(e) => setServerUrl(e.target.value)}
+              onChange={handleInputChange}
               placeholder="https://your-server.com"
               className="w-full bg-(--surface) border border-(--border) focus:border-(--brand-orange) focus:ring-1 focus:ring-(--brand-orange) rounded-sm px-4 py-3 text-sm placeholder-(--text2) outline-none transition-all"
             />
+            {error && (
+              <p className="text-xs text-red-500 mt-2 font-medium">
+                {error}
+              </p>
+            )}
             <p className="text-xs text-(--text2) mt-2">
               We'll remember this for next time on this device.
             </p>
@@ -111,7 +131,8 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-3.5 px-4 rounded-sm border bg-(--surface) hover:border-(--brand-orange) text-(--text2) hover:text-(--text) font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-[0.99]"
+              disabled={!serverUrl.trim()}
+              className="w-full py-3.5 px-4 rounded-sm border bg-(--surface) hover:border-(--brand-orange) text-(--text2) hover:text-(--text) font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-(--border) disabled:hover:text-(--text2)"
             >
               <span>Connect</span>
               <FaArrowRight className="w-3.5 h-3.5" />
