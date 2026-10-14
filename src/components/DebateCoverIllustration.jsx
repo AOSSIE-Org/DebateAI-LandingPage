@@ -1,6 +1,5 @@
-import React from "react";
 
-const DebateCoverIllustration = (props: React.SVGProps<SVGSVGElement>) => (
+const DebateCoverIllustration = (props) => (
 <svg {...props} width="750" height="500" viewBox="0 0 750 500" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M47.821 373.667C43.141 370.728 37.78 368.883 32.282 368.319C29.743 368.058 26.969 368.132 24.932 369.671C24.5 369.997 24.078 370.48 24.175 371.013C24.246 371.405 24.577 371.69 24.894 371.931C31.217 376.754 40.78 377.363 47.821 373.667Z" fill="var(--cover-decoration)"/>
 <path d="M47.423 373.228C43.905 370.483 40.367 367.719 37.387 364.398C34.407 361.077 31.985 357.134 31.095 352.761C30.825 351.435 30.741 349.92 31.592 348.867C39.591 355.115 45.876 363.196 47.423 373.228Z" fill="var(--cover-decoration)"/>
