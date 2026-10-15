@@ -4,6 +4,7 @@ import ConnectServerModal from '../components/ConnectServerModal'
 import SelfHostGuideModal from '../components/SelfHostGuideModal'
 import { FaPlay, FaLink, FaServer, FaArrowRight, FaCircleCheck } from 'react-icons/fa6'
 import { TRY_IT_OUT_URL } from '../lib/connect'
+import DebateCoverIllustration from '../components/DebateCoverIllustration'
 
 export default function LandingPage() {
     const [isConnectModalOpen, setIsConnectModalOpen] = useState(false)
@@ -22,18 +23,20 @@ export default function LandingPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
                 <div className="lg:col-span-6 w-full flex flex-col justify-center">
-                    <div className="w-full max-w-xl mx-auto">
-                        <DebateCarousel />
-                    </div>
+                    <DebateCoverIllustration
+                        className="w-full h-auto object-cover"
+                        role="img"
+                        aria-label="Debate Cover"
+                    />
                 </div>
 
                 <div className="lg:col-span-6 w-full flex flex-col justify-center space-y-8">
                     <div className="space-y-3">
 
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
-                            Play Debate Online <br />
+                            Debate 
                             <span className="text-(--brand-orange)">
-                                on any server.
+                                Online!
                             </span>
                         </h1>
 
@@ -41,8 +44,8 @@ export default function LandingPage() {
                             className="text-base sm:text-lg leading-relaxed max-w-lg"
                             style={{ color: 'var(--text2)' }}
                         >
-                            Debate people or AI in real time, judged by AI. One sovereign app —
-                            pick where you play.
+                            Debate with other people and have your debates judged by AI,
+                            or practice debating against an AI agent.
                         </p>
 
                         {connectedServer && (
