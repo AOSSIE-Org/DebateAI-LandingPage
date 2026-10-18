@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FaGithub } from 'react-icons/fa6'
 import ThemeToggle from './ThemeToggle'
+import DebateAiLogo from './DebateAiLogo'
 
 export default function Header() {
 
@@ -23,25 +24,9 @@ export default function Header() {
         >
           {/* Logo Icon Mark */}
           <div
-            className="w-9 h-9 rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-sm"
-            style={{
-              backgroundColor: 'rgba(234, 88, 12, 0.12)',
-              border: '1px solid rgba(234, 88, 12, 0.3)',
-            }}
+            className="w-9 h-9 rounded-sm flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-sm"
           >
-            <svg
-              className="w-5 h-5 text-[var(--brand-orange)]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              <path d="M8 9h8" strokeWidth="2" />
-              <path d="M8 13h5" strokeWidth="2" />
-            </svg>
+            <DebateAiLogo className="w-8 h-8" />
           </div>
 
           {/* Wordmark */}
