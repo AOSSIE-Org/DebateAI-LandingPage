@@ -1,4 +1,4 @@
-# Contributing to TODO:PROJECT Website
+# Contributing to DebateAI-Landing Page Website
 
 We welcome contributions of all kinds! Whether you are fixing a bug, adding a feature, improving documentation, or optimizing performance, your help is appreciated.
 
@@ -8,7 +8,7 @@ We welcome contributions of all kinds! Whether you are fixing a bug, adding a fe
 
 If you have questions, feedback, or want to discuss ideas before building:
 - **AOSSIE Discord Server:** [https://discord.gg/hjUhu33uAn](https://discord.gg/hjUhu33uAn)
-- **Discrod Channel:** `#TODO: Channel Name` channel in the TODO:Project Discord server
+- **Discord Channel:** `#AI for Debate` channel in the [https://discord.com/channels/1022871757289422898/1312986807914463252](https://discord.com/channels/1022871757289422898/1312986807914463252)
 
 ---
 
@@ -20,8 +20,8 @@ If you have questions, feedback, or want to discuss ideas before building:
 
 ### 2. Fork & Clone
 ```bash
-git clone https://github.com/AOSSIE-Org/Resonate-Website.git
-cd Resonate-Website
+git clone https://github.com/Ri1tik/DebateAI-LandingPage
+cd DebateAI-LandingPage
 ```
 
 ### 3. Install Dependencies
@@ -46,8 +46,6 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 2. **Quality Checks:**
    Run lint and test commands before submitting:
    ```bash
-   npm run lint
-   npm run test
    npm run build
    ```
 3. **Commit Messages:**
@@ -64,4 +62,4 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 - **Internationalization (i18n):** User-visible strings should be added to catalog files in `src/messages/en.json` and `src/messages/hi.json`. Use navigation helpers from `src/i18n/navigation.ts`.
 - **Zero TODOs Policy:** Ensure all code, documentation, and metadata files contain no remaining `TODO` placeholders.
 
-Thank you for contributing to AOSSIE & Resonate!
+Thank you for contributing to AOSSIE & DebateAI!
