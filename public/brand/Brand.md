@@ -1,43 +1,48 @@
 # Brand Guidelines
 
-This document details the visual identity guidelines for **TODO: Project Name** as well as the parent **AOSSIE** organization.
+This document details the visual identity guidelines for **DebateAI** as well as the parent **AOSSIE** organization.
 
 ---
 
-## 🎨 TODO: Project Color Palette
+## 🎨 DebateAI Project Color Palette
 
-Define your project's custom color palette below:
+The DebateAI design system uses a curated palette featuring warm canvas tones and a vivid signature orange accent:
 
 | Color Name | Color Sample | HEX Code | RGB Code | Role |
 | :--- | :--- | :--- | :--- | :--- |
-| **TODO: Primary Color** | 🟦 | `#000000` | `rgb(0, 0, 0)` | Primary Project Color |
-| **TODO: Secondary Color** | 🟩 | `#000000` | `rgb(0, 0, 0)` | Secondary Project Color |
+| **Brand Orange (Primary)** | 🟧 | `#EA580C` / `#F05A28` | `rgb(234, 88, 12)` | Primary Brand Color / Accent |
+| **Brand Orange Hover** | 🟧 | `#C2410C` | `rgb(194, 65, 12)` | Hover State for Action Buttons |
+| **Canvas Background** | ⬜ | `#FAFAF7` | `rgb(250, 250, 247)` | Light Mode Canvas Background |
+| **Surface Card** | ⬜ | `#FFFFFF` | `rgb(255, 255, 255)` | Card & Dialog Surface |
+| **Text Primary (Ink)** | ⬛ | `#18181B` | `rgb(24, 24, 27)` | Headings & Primary Text |
+| **Text Secondary (Muted)** | 🔘 | `#71717A` | `rgb(113, 113, 122)` | Secondary Labels & Descriptions |
+| **Border Neutral** | ◽ | `#E4E4E7` | `rgb(228, 228, 231)` | Card Borders & Dividers |
 
 ---
 
-## 👁️ TODO: Project Visual Assets
+## 👁️ Project Visual Assets
 
 ### 1. Project Logo
 
-The official vector logo for this project:
+The official vector logo for DebateAI:
 
-- **Branding Asset:** [todo-project-logo.svg](icons/todo-project-logo.svg)
-- **Web App Asset Path:** `/brand/icons/todo-project-logo.svg`
+- **Branding Asset:** [debateai_logo.svg](icons/debateai_logo.svg)
+- **Web App Asset Path:** `/brand/icons/debateai_logo.svg`
 
 ### 2. Project Favicon & Icons
 
 The browser tab favicon for this project:
 
-- **Branding Asset:** [todo-project-favicon.ico](brand/icons/todo_project_favicon.ico)
-- **Web App Asset Path:** `/brand/icons/favicon.ico`
+- **Branding Asset:** [favicon.svg](../favicon.svg) / [favicon.ico](../favicon.ico)
+- **Web App Asset Path:** `/favicon.svg`
 
 ---
 
 ## ✍️ Typography
 
-- **Default Font Family:** **Inter**
-- **Fallback Stack:** `ui-sans-serif, system-ui, sans-serif`
-- **Configuration:** Set globally via Tailwind CSS v4 custom theme bindings inside [`globals.css`](src/app/[locale]/globals.css) and loaded asynchronously in the root layout via Next.js Google Font optimizer.
+- **Default Font Families:** **Instrument Sans**, **Fraunces**, and fallback `system-ui, -apple-system, sans-serif`
+- **Headings:** Fraunces / Instrument Sans for impactful, scholarly editorial presence.
+- **Body & Controls:** Instrument Sans for crisp, legible UI elements.
 
 ---
 
@@ -57,5 +62,5 @@ The parent organization (AOSSIE - Australian Open Source Software Innovation and
 
 ### Organization Assets
 
-- **AOSSIE Logo:** [aossie_logo.svg](brand/icons/aossie_logo.svg) (`/brand/icons/aossie_logo.svg`)
-- **Stability Nexus Logo:** [stability_nexus_logo.svg](brand/icons/stability_nexus_logo.svg) (`/brand/icons/stability_nexus_logo.svg`)
+- **AOSSIE Logo:** [aossie_logo.svg](icons/aossie_logo.svg) (`/brand/icons/aossie_logo.svg`)
+- **Stability Nexus Logo:** [stability_nexus_logo.svg](icons/stability_nexus_logo.svg) (`/brand/icons/stability_nexus_logo.svg`)
