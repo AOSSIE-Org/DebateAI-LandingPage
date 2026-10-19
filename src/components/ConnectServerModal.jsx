@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { FaArrowRight, FaCircleExclamation } from 'react-icons/fa6'
 import { connectToServer } from '../lib/connect'
@@ -7,22 +7,26 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
   const [serverUrl, setServerUrl] = useState('')
   const [error, setError] = useState('')
 
+  const handleClose = useCallback(() => {
+    setError('')
+    onClose()
+  }, [onClose])
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isOpen) {
-        onClose()
+        handleClose()
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isOpen, onClose])
+  }, [isOpen, handleClose])
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
-      setError('')
     }
     return () => {
       document.body.style.overflow = ''
@@ -53,7 +57,7 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-(--surface2)/80 backdrop-blur-sm animate-fadeIn"
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div
         className="relative w-full max-w-lg bg-(--bg) text-white border border-(--border) rounded-sm p-6 sm:p-8 shadow-2xl overflow-hidden"
@@ -63,7 +67,7 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
         aria-labelledby="modal-title"
       >
         <button
-          onClick={onClose}
+          onClick={handleClose}
           type="button"
           aria-label="Close dialog"
           className="absolute top-5 right-5 text-(--text2) hover:text-(--text) p-1.5 rounded-sm hover:bg-(--surface2) transition-colors cursor-pointer"

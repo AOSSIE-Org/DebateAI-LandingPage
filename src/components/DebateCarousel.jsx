@@ -64,13 +64,22 @@ export default function DebateCarousel({ slides: customSlides }) {
 
   useEffect(() => {
     if (!emblaApi) return
-    onSelect()
-    setScrollSnaps(emblaApi.scrollSnapList())
+
+    const syncEmblaState = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap())
+      setScrollSnaps(emblaApi.scrollSnapList())
+    }
+
     emblaApi.on('select', onSelect)
-    emblaApi.on('reInit', onSelect)
+    emblaApi.on('reInit', syncEmblaState)
+
+    queueMicrotask(() => {
+      syncEmblaState()
+    })
+
     return () => {
       emblaApi.off('select', onSelect)
-      emblaApi.off('reInit', onSelect)
+      emblaApi.off('reInit', syncEmblaState)
     }
   }, [emblaApi, onSelect])
 

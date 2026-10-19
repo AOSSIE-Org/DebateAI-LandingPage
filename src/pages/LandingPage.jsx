@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import DebateCarousel from '../components/DebateCarousel'
 import ConnectServerModal from '../components/ConnectServerModal'
 import SelfHostGuideModal from '../components/SelfHostGuideModal'
 import { FaPlay, FaLink, FaServer, FaArrowRight, FaCircleCheck } from 'react-icons/fa6'

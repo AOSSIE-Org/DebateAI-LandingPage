@@ -39,6 +39,17 @@
 </div>
 
 <p align="center">
+  <a href="https://scorecard.dev/viewer/?uri=github.com/AOSSIE-Org/DebateAI-LandingPage">
+    <img src="https://api.scorecard.dev/projects/github.com/AOSSIE-Org/DebateAI-LandingPage/badge" alt="OpenSSF Scorecard"/></a>
+  &nbsp;&nbsp;
+  <a href="./BestPracticesChecklist.md">
+    <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAOSSIE-Org%2FDebateAI-LandingPage%2Fmain%2Fchecklist-status.json&query=%24.percent&suffix=%25&label=Best%20Practices&logo=openssf" alt="Best Practices"/></a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/gitleaks/gitleaks">
+    <img src="https://img.shields.io/badge/protected%20by-gitleaks-blue" alt="Protected by Gitleaks"/></a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=black" alt="React 19" />
   &nbsp;
   <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite 8" />
@@ -161,7 +172,7 @@ Ensure you have the following installed on your machine:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Ri1tik/DebateAI-LandingPage.git
+   git clone https://github.com/AOSSIE-Org/DebateAI-LandingPage.git
    cd DebateAI-LandingPage
    ```
 
@@ -183,6 +194,7 @@ Ensure you have the following installed on your machine:
 - `npm run build`: Compiles and bundles production-ready assets into the `dist/` directory.
 - `npm run preview`: Locally previews the production build.
 - `npm run lint`: Runs ESLint to check for code style issues and bugs.
+- `npm test`: Runs automated unit tests with Vitest.
 
 ---
 
@@ -211,6 +223,7 @@ The landing page connects to DebateAI backend instances using query parameters:
 * [x] Automated CI / CD workflows (`.github/workflows/`).
 * [x] CodeRabbit automated AI code review integration (`.coderabbit.yml`).
 * [x] Open-source compliance documentation (`DCO.md`, `COPYRIGHT.md`, `CONTRIBUTING.md`, `MAINTAINERS.md`).
+* [x] OpenSSF Scorecard & Best Practices compliance ([`BestPracticesChecklist.md`](BestPracticesChecklist.md), [`SECURITY.md`](SECURITY.md), [`CHANGELOG.md`](CHANGELOG.md)).
 
 ---
 
