@@ -6,21 +6,25 @@ This document lists the individuals fulfilling the key roles of [Maintainer](htt
 
 ## Ideators
 
-| Name | GitHub Username | Discord Username | Project / Feature Idea          | Area / Focus         | Proposal / Discussion Link                  |
-| ---- | --------------- | ---------------- | ------------------------------- | -------------------- | ------------------------------------------- |
-| TODO | @username       | @discord_user    | Context-First AI Infrastructure | AI Workflow & Skills | [Discussion](https://github.com/AOSSIE-Org) |
+| Name | GitHub Username | Discord Username | Project / Feature Idea | Area / Focus |
+| ---- | --------------- | ---------------- | ---------------------- | ------------ |
+| Bruno | [@Zahnentferner](https://github.com/Zahnentferner) | `@b.wp` | DebateAI Platform | System Architecture & AI Core |
+| Ritik | [@Ri1tik](https://github.com/Ri1tik) | `@ritikyadav0030` | DebateAI Landing Page | Frontend Design & User |
 
 ## Mentors
 
-| Name | GitHub Username | Discord Username | Area / Focus                        |
-| ---- | --------------- | ---------------- | ----------------------------------- |
-| TODO | @username       | @discord_user    | whole Project Guidance & PR Reviews |
+| Name | GitHub Username | Discord Username | Area / Focus |
+| ---- | --------------- | ---------------- | ------------ |
+| Bruno | [@Zahnentferner](https://github.com/Zahnentferner) | `@b.wp` | Whole Project Guidance & PR Reviews |
+| Bhavik | [@bhavik-mangla](https://github.com/bhavik-mangla) | `@kivaa_x` | Project Guidance, Mentorship & PR Reviews |
 
 ## Maintainers
 
-| Name | GitHub Username | Discord Username | Area / Focus                     |
-| ---- | --------------- | ---------------- | -------------------------------- |
-| TODO | @username       | @discord_user    | Repository Maintenance & Merging |
+| Name | GitHub Username | Discord Username | Area / Focus |
+| ---- | --------------- | ---------------- | ------------ |
+| Bruno | [@Zahnentferner](https://github.com/Zahnentferner) | `@b.wp` | Repository Maintenance & Merging |
+| Bhavik | [@bhavik-mangla](https://github.com/bhavik-mangla) | `@kivaa_x` | Repository Maintenance & Code Reviews |
+| Ritik | [@Ri1tik](https://github.com/Ri1tik) | `@ritikyadav0030` | Repository Maintenance & Frontend Development |
 
 ## 📜 Contribution Guidelines
 
