@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discord Community
+    url: https://discord.gg/hjUhu33uAn
+    about: Join our Discord server for discussions, Q&A, and community support.
+  - name: Security Vulnerability Disclosure
+    url: https://github.com/AOSSIE-Org/DebateAI-LandingPage/security/advisories/new
+    about: Please report security vulnerabilities privately via GitHub Security Advisories.
+  - name: AOSSIE Website
+    url: https://aossie.org/
+    about: Learn more about Australian Open Source Software Innovation and Education (AOSSIE).
