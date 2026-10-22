@@ -33,7 +33,7 @@ export default function LandingPage() {
                     <div className="space-y-3">
 
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
-                            Debate 
+                            Debate-
                             <span className="text-(--brand-orange)">
                                 Online!
                             </span>

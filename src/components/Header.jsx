@@ -30,7 +30,7 @@ export default function Header() {
             }}
           >
             <svg
-              className="w-5 h-5 text-[var(--brand-orange)]"
+              className="w-5 h-5 text-(--brand-orange)"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
