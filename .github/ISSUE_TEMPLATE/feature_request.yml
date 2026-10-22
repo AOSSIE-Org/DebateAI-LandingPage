@@ -1,32 +1,42 @@
-name: 💡 Feature Request
-description: Propose a new feature or enhancement for DebateAI Landing Page.
+name: Feature Request
+description: Suggest a new feature or enhancement
 title: "[FEATURE]: "
-labels: ["enhancement"]
+labels: ["enhancement", "triage-needed"]
 body:
   - type: markdown
     attributes:
       value: |
-        Have an idea to make the DebateAI Landing Page better? Let us know!
+        Thanks for taking the time to suggest a feature! Please fill out the sections below.
+
   - type: textarea
-    id: problem
+    id: feature-description
     attributes:
-      label: Problem or Use Case
-      description: Is your feature request related to a problem or missing capability?
-      placeholder: I'm always frustrated when...
+      label: Feature and its Use Cases
+      description: Describe the feature you want and how it would be used
+      placeholder: |
+        Describe the feature and its potential use cases:
+        - What is the feature?
+        - How would users benefit from it?
+        - What scenarios would this feature address?
     validations:
       required: true
+
   - type: textarea
-    id: solution
+    id: additional-context
     attributes:
-      label: Proposed Solution
-      description: Describe the solution you'd like to see implemented.
-      placeholder: Provide a clear explanation of how it should work...
-    validations:
-      required: true
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives Considered
-      description: Any alternative solutions or features you've considered?
+      label: Additional Context
+      description: Add any other context, mockups, or references
+      placeholder: Screenshots, links, examples, etc.
     validations:
       required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our Code of Conduct and join our Discord
+      options:
+        - label: I have joined the [Discord server](https://discord.gg/hjUhu33uAn) and will post updates there
+          required: true
+        - label: I have searched existing issues to avoid duplicates
+          required: true
