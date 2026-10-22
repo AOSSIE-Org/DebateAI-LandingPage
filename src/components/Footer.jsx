@@ -1,6 +1,7 @@
 import { FaGithub, FaLinkedin, FaDiscord, FaYoutube, FaXTwitter } from 'react-icons/fa6'
 import { HiOutlineMail } from 'react-icons/hi'
 import { BsHeartFill } from 'react-icons/bs'
+import aossieLogo from '../assets/aossie_logo.svg'
 
 const footerLinks = [
   {
@@ -70,7 +71,7 @@ export default function Footer() {
               aria-label="Visit AOSSIE organization website"
             >
               <img
-                src="/brand/icons/aossie_logo.svg"
+                src={aossieLogo}
                 alt="AOSSIE"
                 className="h-14 sm:h-16 w-auto"
                 onError={(e) => {
