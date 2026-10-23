@@ -407,3 +407,115 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .btn-copy:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* ==========================================================================
+   Site Footer Styles
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--surface);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.site-footer-divider {
+  background-color: var(--border);
+}
+
+.site-footer-social-link {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text2);
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.site-footer-social-link:hover {
+  color: var(--brand-orange);
+  border-color: var(--brand-orange);
+  background-color: var(--surface2);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1023px) {
+  .site-footer-inner {
+    align-items: stretch;
+    gap: 0;
+    padding: 24px 16px 20px;
+  }
+
+  .site-footer-brand {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-footer-brand-divider {
+    display: none;
+  }
+
+  .site-footer-description {
+    max-width: 340px;
+  }
+
+  .site-footer-description p {
+    margin-top: 0;
+  }
+
+  .site-footer-divider {
+    display: none;
+    width: 100% !important;
+    height: 0 !important;
+    margin: 22px 0 0;
+    background: transparent;
+    border-top: 1px solid var(--border);
+    transform: none !important;
+    rotate: none !important;
+  }
+
+  .site-footer-links {
+    align-items: stretch;
+  }
+
+  .site-footer-links-column {
+    gap: 0;
+  }
+
+  .site-footer-nav {
+    gap: 10px 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .site-footer-support-link {
+    flex-basis: 100%;
+  }
+
+  .site-footer-socials {
+    gap: 12px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-footer-meta-section {
+    align-items: stretch;
+  }
+
+  .site-footer-meta {
+    align-items: center;
+    gap: 8px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .site-footer-meta p {
+    justify-content: center;
+    text-align: center;
+  }
+}
