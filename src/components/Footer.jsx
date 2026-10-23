@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom'
 import { FaGithub, FaLinkedin, FaDiscord, FaYoutube, FaXTwitter } from 'react-icons/fa6'
 import { HiOutlineMail } from 'react-icons/hi'
 import { BsHeartFill } from 'react-icons/bs'
 import aossieLogo from '../assets/aossie_logo.svg'
+import DebateAiLogo from './DebateAiLogo'
 
 const footerLinks = [
   {
@@ -55,58 +57,80 @@ const socialLinks = [
 ]
 
 export default function Footer() {
-
   return (
     <footer
-      className="w-full transition-colors duration-200 mt-auto  bg-(--surface) border-t border-(--border)"
+      className="site-footer w-full transition-colors duration-200 mt-auto"
+      style={{ borderTop: '1px solid var(--border)' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 lg:items-start sm:items-">
-          <div className="lg:col-span-5 flex flex-col sm:flex-row items-start sm:items-center gap-5">
-            <a
-              href="https://aossie.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 hover:opacity-90 transition-opacity"
-              aria-label="Visit AOSSIE organization website"
-            >
-              <img
-                src={aossieLogo}
-                alt="AOSSIE"
-                className="h-14 sm:h-16 w-auto"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none'
-                }}
-              />
-            </a>
-
-            <div
-              className="hidden sm:block h-16 w-px bg-(--border)"
-              
+      <div className="site-footer-inner flex w-full flex-col gap-8 px-4 py-8 md:px-6 lg:flex-row lg:items-center lg:justify-around">
+        {/* LEFT SECTION */}
+        <div className="site-footer-brand flex items-center gap-8 justify-center">
+          {/* Logo */}
+          <a
+            href="https://aossie.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 hover:opacity-90 transition-opacity"
+            aria-label="Visit AOSSIE organization website"
+          >
+            <img
+              src={aossieLogo}
+              alt="AOSSIE"
+              className="h-16 w-auto"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none'
+              }}
             />
+          </a>
 
-            <div className="space-y-1 max-w-sm">
-              <h4 className="text-sm font-semibold tracking-wide text-(--text)">
-                AOSSIE
-              </h4>
-              <p className="text-xs leading-relaxed text-(--text2)">
-                Australian Open Source Software Innovation and Education is a non-profit organization dedicated to building impactful open-source software, mentoring contributors, and fostering innovation globally.
-              </p>
-            </div>
+          {/* Separator */}
+          <div
+            className="site-footer-divider site-footer-brand-divider h-20 w-px bg-zinc-700"
+            style={{ backgroundColor: 'var(--border)' }}
+          />
+
+          {/* Description */}
+          <div className="site-footer-description max-w-sm">
+            <p
+              className="mt-2 text-sm leading-5"
+              style={{ color: 'var(--text2)' }}
+            >
+              AOSSIE is a non-profit organization dedicated to building
+              impactful open-source software, mentoring contributors,
+              and fostering innovation through global collaboration.
+            </p>
           </div>
+        </div>
 
-          <div className="lg:col-span-4 flex flex-col gap-5">
+        {/* MIDDLE SECTION */}
+        <div className="site-footer-links flex flex-col lg:flex-row lg:gap-8 items-center">
+          {/* Separator */}
+          <div
+            className="site-footer-divider h-25 w-px bg-zinc-700 rotate-90 lg:rotate-180"
+            style={{ backgroundColor: 'var(--border)', height: '100px' }}
+          />
+
+          <div className="site-footer-links-column flex flex-col gap-6">
+            {/* NAVIGATION */}
             <nav
               aria-label="Footer Navigation"
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs"
+              className="site-footer-nav flex flex-wrap items-center gap-x-6 gap-y-3 justify-center"
             >
               {footerLinks.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  target={item.isExternal ? '_blank' : undefined}
+                  to={item.href}
+                  className={
+                    item.label === 'Support Us'
+                      ? 'site-footer-support-link'
+                      : undefined
+                  }
+                  target={item.isExternal ? '_blank' : '_self'}
                   rel={item.isExternal ? 'noopener noreferrer' : undefined}
-                  className="transition-colors duration-150 hover:underline text-(--text2)"
+                  style={{
+                    color: 'var(--text2)',
+                    transition: 'color 0.2s ease',
+                  }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = 'var(--brand-orange)'
                   }}
@@ -115,14 +139,15 @@ export default function Footer() {
                   }}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-3.5">
+            {/* SOCIAL LINKS */}
+            <div className="site-footer-socials flex items-center gap-6 justify-center">
               {socialLinks.map((item) => {
                 const Icon = item.icon
+
                 return (
                   <a
                     key={item.label}
@@ -131,47 +156,67 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={`Visit our ${item.label}`}
                     title={item.label}
-                    className="p-2 rounded-sm border transition-all duration-200 hover:scale-110 active:scale-95"
+                    className="site-footer-social-link"
                     style={{
-                      borderColor: 'var(--border)',
-                      backgroundColor: 'var(--surface2)',
                       color: 'var(--text2)',
+                      transition: 'color 0.2s ease',
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = 'var(--brand-orange)'
-                      e.currentTarget.style.borderColor = 'var(--brand-orange)'
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.color = 'var(--text2)'
-                      e.currentTarget.style.borderColor = 'var(--border)'
                     }}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon size={18} />
                   </a>
                 )
               })}
             </div>
           </div>
+        </div>
 
-          <div className="lg:col-span-3 flex flex-col gap-2.5 lg:items-end lg:text-right text-xs">
-            <p className="font-medium tracking-wider uppercase text-[11px]" style={{ color: 'var(--text)' }}>
-              © {new Date().getFullYear()} AOSSIE
+        {/* RIGHT SECTION */}
+        <div className="site-footer-meta-section flex flex-col lg:flex-row lg:gap-8 items-center">
+          {/* Separator */}
+          <div
+            className="site-footer-divider h-25 w-px bg-zinc-700 rotate-90 lg:rotate-180"
+            style={{ backgroundColor: 'var(--border)', height: '100px' }}
+          />
+
+          <div className="site-footer-meta flex flex-col gap-2 items-center text-center lg:items-end lg:text-right">
+            <p className="flex items-center justify-center lg:justify-end text-xs tracking-[0.2em]">
+              © {new Date().getFullYear()}
+              <span>
+                <Link
+                  to="/"
+                  aria-label="Go to home page"
+                  className="inline-flex items-center gap-1.5 ml-2 hover:opacity-80 transition-opacity"
+                >
+                  <DebateAiLogo className="h-6 w-auto cursor-pointer" />
+                </Link>
+              </span>
             </p>
 
-            <p className="uppercase tracking-[0.18em] text-[10px]" style={{ color: 'var(--text3)' }}>
+            <p
+              className="text-xs uppercase tracking-[0.2em]"
+              style={{ color: 'var(--text3)' }}
+            >
               Built for open source communities
             </p>
 
-            <p className="flex items-center lg:justify-end gap-1.5 text-xs font-normal mt-1">
+            <p className="flex items-center justify-center lg:justify-end gap-2 text-sm font-normal">
               <span>Made with</span>
-              <BsHeartFill className="text-amber-400 w-3 h-3 animate-pulse" />
+              <BsHeartFill className="text-yellow-400" size={14} />
               <span>
                 by{' '}
                 <a
-                  href="https://aossie.org/"
+                  href="https://github.com/AOSSIE-Org"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  aria-label="AOSSIE GitHub link"
                   className="font-semibold underline transition-colors"
+                  style={{ color: 'var(--text)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = 'var(--brand-orange)'
                   }}
