@@ -11,7 +11,7 @@
 <!-- Live at URL (To be configured later) -->
 <p align="center">
   <!-- Live at URL will be configured later -->
-  <a href="#">
+  <a href="https://hub.debateai.aossie.org/">
     <img src="https://img.shields.io/badge/DebateAI-Live_at_URL-228B22?style=for-the-badge&labelColor=FFC517" alt="DebateAI Live at URL" />
   </a>
 </p>
