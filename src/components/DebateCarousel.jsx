@@ -110,7 +110,7 @@ export default function DebateCarousel({ slides: customSlides }) {
                 ) : (
                   <>
                     <div className="relative z-10 flex items-center justify-end">
-                      <span className="text-xs font-mono text-zinc-500">
+                      <span className="text-xs font-mono text-(--text3)">
                         0{index + 1} / 0{slides.length}
                       </span>
                     </div>
@@ -183,7 +183,7 @@ export default function DebateCarousel({ slides: customSlides }) {
               aria-label={`Go to slide ${index + 1}`}
               className={`transition-all duration-300 rounded-full cursor-pointer ${index === selectedIndex
                   ? 'w-7 h-2 bg-(--brand-orange)'
-                  : 'w-2 h-2 bg-zinc-600 hover:bg-zinc-400'
+                  : 'w-2 h-2 bg-(--text3) hover:bg-(--text2)'
                 }`}
             />
           ))}

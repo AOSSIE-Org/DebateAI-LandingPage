@@ -1,4 +1,10 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+
+/* Scan only the real component sources. Without this, Tailwind also mines
+   Markdown docs and test files for "class-like" strings, which injects dead
+   palette utilities (e.g. `.text-zinc-400` picked up from AGENTS.md) into the
+   production bundle. */
+@source "./**/*.jsx";
 
 /* Dark Theme (Default) */
 :root {

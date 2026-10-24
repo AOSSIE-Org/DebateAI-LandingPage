@@ -63,4 +63,4 @@ The parent organization (AOSSIE - Australian Open Source Software Innovation and
 ### Organization Assets
 
 - **AOSSIE Logo:** [aossie_logo.svg](icons/aossie_logo.svg) (`/brand/icons/aossie_logo.svg`)
-- **Stability Nexus Logo:** [stability_nexus_logo.svg](icons/stability_nexus_logo.svg) (`/brand/icons/stability_nexus_logo.svg`)
+- **Stability Nexus Logo:** maintained by the Stability Nexus project in its own repository — it is not bundled in this repository.

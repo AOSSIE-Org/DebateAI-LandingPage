@@ -85,7 +85,7 @@ export default function Footer() {
 
           {/* Separator */}
           <div
-            className="site-footer-divider site-footer-brand-divider h-20 w-px bg-zinc-700"
+            className="site-footer-divider site-footer-brand-divider h-20 w-px"
             style={{ backgroundColor: 'var(--border)' }}
           />
 
@@ -106,7 +106,7 @@ export default function Footer() {
         <div className="site-footer-links flex flex-col lg:flex-row lg:gap-8 items-center">
           {/* Separator */}
           <div
-            className="site-footer-divider h-25 w-px bg-zinc-700 rotate-90 lg:rotate-180"
+            className="site-footer-divider h-25 w-px rotate-90 lg:rotate-180"
             style={{ backgroundColor: 'var(--border)', height: '100px' }}
           />
 
@@ -180,7 +180,7 @@ export default function Footer() {
         <div className="site-footer-meta-section flex flex-col lg:flex-row lg:gap-8 items-center">
           {/* Separator */}
           <div
-            className="site-footer-divider h-25 w-px bg-zinc-700 rotate-90 lg:rotate-180"
+            className="site-footer-divider h-25 w-px rotate-90 lg:rotate-180"
             style={{ backgroundColor: 'var(--border)', height: '100px' }}
           />
 
@@ -207,7 +207,7 @@ export default function Footer() {
 
             <p className="flex items-center justify-center lg:justify-end gap-2 text-sm font-normal">
               <span>Made with</span>
-              <BsHeartFill className="text-yellow-400" size={14} />
+              <BsHeartFill className="text-(--accent)" size={14} />
               <span>
                 by{' '}
                 <a

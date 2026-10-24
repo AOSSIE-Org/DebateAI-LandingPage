@@ -1,20 +1,26 @@
 import { useState } from 'react'
 import ConnectServerModal from '../components/ConnectServerModal'
 import SelfHostGuideModal from '../components/SelfHostGuideModal'
-import { FaPlay, FaLink, FaServer, FaArrowRight, FaCircleCheck } from 'react-icons/fa6'
+import { FaPlay, FaLink, FaServer, FaArrowRight, FaCircleCheck, FaXmark } from 'react-icons/fa6'
 import { TRY_IT_OUT_URL } from '../lib/connect'
+import { loadLastServer, clearLastServer } from '../lib/storage'
 import DebateCoverIllustration from '../components/DebateCoverIllustration'
 
 export default function LandingPage() {
     const [isConnectModalOpen, setIsConnectModalOpen] = useState(false)
     const [isGuideModalOpen, setIsGuideModalOpen] = useState(false)
-    const [connectedServer, setConnectedServer] = useState(null)
+    const [connectedServer, setConnectedServer] = useState(() => loadLastServer())
 
     const handleConnect = (url) => {
         if (url && url.trim()) {
             setConnectedServer(url.trim())
         }
         setIsConnectModalOpen(false)
+    }
+
+    const handleForgetServer = () => {
+        clearLastServer()
+        setConnectedServer(null)
     }
 
     return (
@@ -48,9 +54,18 @@ export default function LandingPage() {
                         </p>
 
                         {connectedServer && (
-                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium">
-                                <FaCircleCheck className="w-3.5 h-3.5 text-green-500" />
-                                <span>Custom Target: {connectedServer}</span>
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-(--green)/10 border border-(--green)/20 text-(--green) text-xs font-medium">
+                                <FaCircleCheck className="w-3.5 h-3.5 text-(--green)" />
+                                <span>Custom Server: {connectedServer}</span>
+                                <button
+                                    type="button"
+                                    onClick={handleForgetServer}
+                                    aria-label="Forget remembered server"
+                                    title="Forget remembered server"
+                                    className="ml-1 p-0.5 rounded-xs text-(--green)/70 hover:text-(--green) hover:bg-(--green)/15 transition-colors cursor-pointer"
+                                >
+                                    <FaXmark className="w-3 h-3" />
+                                </button>
                             </div>
                         )}
                     </div>
@@ -58,14 +73,14 @@ export default function LandingPage() {
                     <div className="space-y-3.5">
                         <a
                             href={TRY_IT_OUT_URL}
-                            className="group relative p-4 sm:p-5 rounded-sm border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 hover:shadow-lg hover:border-orange-500/50"
+                            className="group relative p-4 sm:p-5 rounded-sm border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 hover:shadow-lg hover:border-(--brand-orange)/50"
                             style={{
                                 backgroundColor: 'var(--surface)',
                                 borderColor: 'var(--border)',
                             }}
                         >
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-sm flex items-center justify-center bg-orange-500/10 border border-orange-500/20 text-(--brand-orange) group-hover:scale-105 transition-transform duration-200 shrink-0">
+                                <div className="w-12 h-12 rounded-sm flex items-center justify-center bg-(--brand-orange)/10 border border-(--brand-orange)/20 text-(--brand-orange) group-hover:scale-105 transition-transform duration-200 shrink-0">
                                     <FaPlay className="w-4 h-4 ml-0.5" />
                                 </div>
                                 <div>
@@ -76,7 +91,7 @@ export default function LandingPage() {
                                         >
                                             Try it out
                                         </h2>
-                                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm bg-green-500/15 text-green-400 border border-green-500/30">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm bg-(--green)/15 text-(--green) border border-(--green)/30">
                                             Live
                                         </span>
                                     </div>
@@ -89,7 +104,7 @@ export default function LandingPage() {
                                 </div>
                             </div>
 
-                            <div className="w-9 h-9 rounded-sm flex items-center justify-center text-(--text2) border group-hover:text-white group-hover:border-(--brand-orange) transition-all duration-200 shrink-0">
+                            <div className="w-9 h-9 rounded-sm flex items-center justify-center text-(--text2) border group-hover:text-(--brand-orange) group-hover:border-(--brand-orange) transition-all duration-200 shrink-0">
                                 <FaArrowRight className="w-3.5 h-3.5 group-hover:text-(--brand-orange) transition-all duration-200 " />
                             </div>
                         </a>
@@ -99,14 +114,14 @@ export default function LandingPage() {
                             role="button"
                             tabIndex={0}
                             onKeyDown={(e) => e.key === 'Enter' && setIsConnectModalOpen(true)}
-                            className="group relative p-4 sm:p-5 rounded-sm border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 hover:shadow-lg hover:border-orange-500/50"
+                            className="group relative p-4 sm:p-5 rounded-sm border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 hover:shadow-lg hover:border-(--brand-orange)/50"
                             style={{
                                 backgroundColor: 'var(--surface)',
                                 borderColor: 'var(--border)',
                             }}
                         >
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-sm flex items-center justify-center bg-(--surface2) border border-(--border) text-(--text) group-hover:text-(--brand-orange) group-hover:bg-orange-500/10 group-hover:border-orange-500/20 group-hover:scale-105 transition-all duration-200 shrink-0">
+                                <div className="w-12 h-12 rounded-sm flex items-center justify-center bg-(--surface2) border border-(--border) text-(--text) group-hover:text-(--brand-orange) group-hover:bg-(--brand-orange)/10 group-hover:border-(--brand-orange)/20 group-hover:scale-105 transition-all duration-200 shrink-0">
                                     <FaLink className="w-4 h-4" />
                                 </div>
                                 <div>
@@ -125,7 +140,7 @@ export default function LandingPage() {
                                 </div>
                             </div>
 
-                            <div className="w-9 h-9 rounded-sm flex items-center justify-center text-zinc-400 group-hover:text-white border group-hover:border-(--brand-orange) transition-all duration-200 shrink-0">
+                            <div className="w-9 h-9 rounded-sm flex items-center justify-center text-(--text2) group-hover:text-(--brand-orange) border group-hover:border-(--brand-orange) transition-all duration-200 shrink-0">
                                 <FaArrowRight className="w-3.5 h-3.5 group-hover:text-(--brand-orange) transition-all duration-200" />
                             </div>
                         </div>
@@ -135,14 +150,14 @@ export default function LandingPage() {
                             role="button"
                             tabIndex={0}
                             onKeyDown={(e) => e.key === 'Enter' && setIsGuideModalOpen(true)}
-                            className="group relative p-4 sm:p-5 rounded-sm border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 hover:shadow-lg hover:border-orange-500/50"
+                            className="group relative p-4 sm:p-5 rounded-sm border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 hover:shadow-lg hover:border-(--brand-orange)/50"
                             style={{
                                 backgroundColor: 'var(--surface)',
                                 borderColor: 'var(--border)',
                             }}
                         >
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-sm flex items-center justify-center bg-(--surface2) border border-(--border) text-(--text) group-hover:text-(--brand-orange) group-hover:bg-orange-500/10 group-hover:border-orange-500/20 group-hover:scale-105 transition-all duration-200 shrink-0">
+                                <div className="w-12 h-12 rounded-sm flex items-center justify-center bg-(--surface2) border border-(--border) text-(--text) group-hover:text-(--brand-orange) group-hover:bg-(--brand-orange)/10 group-hover:border-(--brand-orange)/20 group-hover:scale-105 transition-all duration-200 shrink-0">
                                     <FaServer className="w-4 h-4" />
                                 </div>
                                 <div>
@@ -161,7 +176,7 @@ export default function LandingPage() {
                                 </div>
                             </div>
 
-                            <div className="w-9 h-9 rounded-sm flex items-center justify-center text-zinc-400 border group-hover:text-white group-hover:border-(--brand-orange) transition-all duration-200 shrink-0">
+                            <div className="w-9 h-9 rounded-sm flex items-center justify-center text-(--text2) border group-hover:text-(--brand-orange) group-hover:border-(--brand-orange) transition-all duration-200 shrink-0">
                                 <FaArrowRight className="w-3.5 h-3.5 group-hover:text-(--brand-orange) transition-all duration-200" />
                             </div>
                         </div>
