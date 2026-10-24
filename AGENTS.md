@@ -99,8 +99,7 @@ DebateAI-LandingPage/
 │   │   ├── Brand.md              # Official visual identity and branding guidelines
 │   │   └── icons/                # Organization & project vector logos
 │   │       ├── aossie_logo.svg   # AOSSIE organizational logo
-│   │       ├── debateai_logo.svg # DebateAI vector logo
-│   │       └── stability_nexus_logo.svg
+│   │       └── debateai_logo.svg # DebateAI vector logo
 │   ├── favicon.ico / favicon.svg # Browser favicon
 │   ├── llms.txt                  # Directives and summary for LLM crawlers
 │   └── robots.txt                # Search engine crawler policies

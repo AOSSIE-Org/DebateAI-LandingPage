@@ -8,11 +8,10 @@
   <img src="public/brand/icons/debateai_logo.svg" height="130" alt="DebateAI Logo" />
 </p>
 
-<!-- Live at URL (To be configured later) -->
+<!-- Live deployment -->
 <p align="center">
-  <!-- Live at URL will be configured later -->
   <a href="https://hub.debateai.aossie.org/">
-    <img src="https://img.shields.io/badge/DebateAI-Live_at_URL-228B22?style=for-the-badge&labelColor=FFC517" alt="DebateAI Live at URL" />
+    <img src="https://img.shields.io/badge/DebateAI-Live-228B22?style=for-the-badge&labelColor=FFC517" alt="DebateAI Live" />
   </a>
 </p>
 
@@ -83,7 +82,7 @@ This repository hosts the **DebateAI Landing Page**, an ultra-responsive, cloudl
   Quick single-click redirection to launch directly into the official AOSSIE DebateAI platform.
 
 - **🔗 Connect to Any Community Server**  
-  An interactive connection modal with URL validation and error handling for joining private, school, or club debate servers.
+  An interactive connection modal with URL validation and error handling for joining private, school, or club debate servers. The chosen server is validated, normalised and remembered on the device, and is prefilled the next time you open the dialog.
 
 - **🐳 Comprehensive Self-Hosting Guide**  
   Interactive in-app guidance modal detailing Docker Compose deployment, environment variable configuration, and deployment on self-hosting platforms like Coolify and Dokploy.
@@ -92,7 +91,7 @@ This repository hosts the **DebateAI Landing Page**, an ultra-responsive, cloudl
   Engaging vector artwork illustrating real-time debates (proponent vs. opponent with structured arguments).
 
 - **🌓 Seamless Dual Theme System**  
-  Smooth transitions between Light, Dark, and System-preferred color palettes via semantic CSS variables and Tailwind CSS v4.
+  Smooth transitions between Light and Dark color palettes via semantic CSS variables and Tailwind CSS v4, with the choice persisted in `localStorage`.
 
 - **📱 Fully Responsive Design**  
   Flawless mobile, tablet, and desktop viewing experience built to match official AOSSIE design specifications.
@@ -125,10 +124,13 @@ DebateAI-LandingPage/
 │   │   └── icons/                # Organization & project vector assets
 │   │       ├── aossie_logo.svg   # Official AOSSIE vector logo
 │   │       └── debateai_logo.svg # Official DebateAI vector logo
-│   ├── favicon.ico               # Browser favicon
-│   ├── favicon.svg               # Browser vector favicon
+│   ├── apple-touch-icon.png      # iOS home-screen icon
+│   ├── favicon.ico               # Browser favicon (raster)
+│   ├── favicon.svg               # Browser favicon (vector)
+│   ├── og-image.png              # Open Graph / Twitter card image
 │   ├── llms.txt                  # LLM crawler directives
-│   └── robots.txt                # Search engine crawler policies
+│   ├── robots.txt                # Search engine crawler policies
+│   └── sitemap.xml               # Canonical sitemap
 ├── src/
 │   ├── assets/                   # Vector graphics & illustration assets (DebateCover4.svg)
 │   ├── components/               # Modular UI components
@@ -142,7 +144,12 @@ DebateAI-LandingPage/
 │   ├── context/
 │   │   └── ThemeContext.jsx      # React context managing theme state
 │   ├── lib/
-│   │   └── connect.js            # URL parsing & server redirection logic
+│   │   ├── connect.js            # URL parsing & server redirection logic
+│   │   ├── site.js               # Canonical site metadata (origin, title, description)
+│   │   └── storage.js            # localStorage helper for the remembered server
+│   ├── __tests__/
+│   │   ├── siteMetadata.test.js       # Guards the public metadata against placeholders
+│   │   └── tailwindClassStrings.test.js # Guards the Tailwind class strings in src/
 │   ├── pages/
 │   │   └── LandingPage.jsx       # Main landing page view
 │   ├── App.jsx                   # Root application routing
@@ -206,7 +213,7 @@ The landing page connects to DebateAI backend instances using query parameters:
 | :--- | :--- | :--- |
 | **Official Server** | `https://debateai.aossie.org/?server=official` | Connects directly to AOSSIE's publicly hosted server. |
 | **Community Server** | `https://debateai.aossie.org/?server=https://debate.your-school.edu` | Routes to an institution or club server. |
-| **Local / Dev Server** | `http://localhost:5173/?server=http://localhost:1313` | Useful for local development and testing with a local Go backend. |
+| **Local / Dev Server** | `https://debateai.aossie.org/?server=http://localhost:1313` | Routes to a backend running on your own machine (plain `http:` is accepted for `localhost` and `127.0.0.1` only). |
 
 ---
 

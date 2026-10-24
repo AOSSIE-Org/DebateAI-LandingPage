@@ -1,14 +1,19 @@
 import { useState, useEffect, useCallback } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { FaArrowRight, FaCircleExclamation } from 'react-icons/fa6'
-import { connectToServer } from '../lib/connect'
+import { connectToServer, normalize } from '../lib/connect'
+import { loadLastServer, saveLastServer } from '../lib/storage'
 
 export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
-  const [serverUrl, setServerUrl] = useState('')
+  const [draft, setDraft] = useState(null)
   const [error, setError] = useState('')
+
+  const rememberedServer = loadLastServer() ?? ''
+  const serverUrl = draft ?? rememberedServer
 
   const handleClose = useCallback(() => {
     setError('')
+    setDraft(null)
     onClose()
   }, [onClose])
 
@@ -36,7 +41,7 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
   if (!isOpen) return null
 
   const handleInputChange = (e) => {
-    setServerUrl(e.target.value)
+    setDraft(e.target.value)
     if (error) {
       setError('')
     }
@@ -44,23 +49,28 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!serverUrl.trim()) return
-    if (!connectToServer(serverUrl)) {
+    const trimmed = serverUrl.trim()
+    if (!trimmed) return
+    const normalized = normalize(trimmed)
+    if (!normalized) {
       setError('Enter a valid https:// URL')
       return
     }
+    saveLastServer(normalized)
+    setDraft(null)
     if (onConnect) {
-      onConnect(serverUrl)
+      onConnect(normalized)
     }
+    connectToServer(normalized)
   }
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-(--surface2)/80 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-(--surface2)/80 backdrop-blur-sm fade-in"
       onClick={handleClose}
     >
       <div
-        className="relative w-full max-w-lg bg-(--bg) text-white border border-(--border) rounded-sm p-6 sm:p-8 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-lg bg-(--bg) text-(--text) border border-(--border) rounded-sm p-6 sm:p-8 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -109,12 +119,12 @@ export default function ConnectServerModal({ isOpen, onClose, onConnect }) {
               className="w-full bg-(--surface) border border-(--border) focus:border-(--brand-orange) focus:ring-1 focus:ring-(--brand-orange) rounded-sm px-4 py-3 text-sm placeholder-(--text2) outline-none transition-all"
             />
             {error && (
-              <p className="text-xs text-red-500 mt-2 font-medium">
+              <p className="text-xs text-(--red) mt-2 font-medium">
                 {error}
               </p>
             )}
             <p className="text-xs text-(--text2) mt-2">
-              We'll remember this for next time on this device.
+              We&apos;ll remember this server on this device and prefill it next time.
             </p>
           </div>
 

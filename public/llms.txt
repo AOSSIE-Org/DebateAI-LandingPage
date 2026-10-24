@@ -1,39 +1,81 @@
-# TODO: Project Title (AOSSIE Webpage Starter Template)
+# DebateAI Landing Page
 
-TODO: Project Description
-This repository is a high-performance webpage built on **Next.js 16 (App Router)**, **React 19**, and **Tailwind CSS v4**. It is pre-configured with **next-intl** for internationalization (i18n) and **next-themes** for semantic dark/light theme tokens.
+> The static, server-agnostic landing page for **DebateAI** — an open-source, AI-enhanced real-time debating platform built by [AOSSIE](https://aossie.org). This site is the entry point: it lets a visitor play on the official managed server, connect to any community or self-hosted backend, and read a step-by-step deployment guide.
+
+This repository is a **Vite 8 + React 19 client-side SPA** styled with **Tailwind CSS v4** semantic theme tokens, with **React Router 7** for routing, **Embla Carousel** for the feature carousel, and **Vitest** for tests. It ships **no server runtime of its own** — it is a static bundle that redirects the browser to a DebateAI web app and remembers the visitor's chosen backend locally.
 
 ---
 
-## 📂 Project Architecture
+## 📂 Repository Architecture
 
-- **`src/app/[locale]/`**: Localized dynamic route group. All pages and layouts live here.
-- **`src/app/sitemap.ts`**: Dynamically generates localized sitemaps.
-- **`public/brand/`**: Repository branding folder containing the logo, favicon, and brand specifications (`Brand.md`).
-- **`src/config/languages.ts`**: Supported languages configuration list.
-- **`src/i18n/`**: Configurations for translation lookups and custom navigation helpers.
-- **`src/messages/`**: Directory containing translation catalogs (e.g., `en.json`, `hi.json`).
-- **`src/components/`**: Location for reusable, localized UI components.
-- **`src/proxy.ts`**: Next.js 16 Proxy Middleware for automatic locale routing.
+- **`src/main.jsx`**: React 19 entry point. Mounts `BrowserRouter` → `ThemeProvider` → `App`.
+- **`src/App.jsx`**: Layout shell (`Header`, `main` → `LandingPage`, `Footer`).
+- **`src/pages/LandingPage.jsx`**: The landing view — hero cover illustration plus the three action cards (*Try it out*, *Connect to a server*, *Self-host DebateAI*).
+- **`src/components/`**: Presentational React components.
+  - `Header.jsx` — brand wordmark, theme switch, GitHub link.
+  - `Footer.jsx` — AOSSIE organisation blurb, navigation and social links.
+  - `DebateCoverIllustration.jsx` — the responsive 442-path SVG debate-arena illustration.
+  - `DebateCarousel.jsx` — Embla-powered feature carousel (topic slides).
+  - `ConnectServerModal.jsx` — custom-server connection dialog (URL validation + remembered server).
+  - `SelfHostGuideModal.jsx` — collapsible Docker Compose self-hosting guide.
+  - `ThemeToggle.jsx` — light/dark switch.
+  - `DebateAiLogo.jsx` — inline DebateAI wordmark SVG.
+- **`src/context/ThemeContext.jsx`**: Theme provider. Persists to `localStorage` key `debateai_theme` (`"dark"` | `"light"`, default `"dark"`).
+- **`src/lib/connect.js`**: URL contract for connecting to a backend.
+- **`src/lib/storage.js`**: Local persistence helper for the last connected server (key `debateai_last_server`).
+- **`src/index.css`**: All design tokens, keyframes and shared component classes.
+- **`public/`**: Static assets served from the web root — `brand/`, `favicon.svg`, `favicon.ico`, `og-image.png`, `llms.txt`, `robots.txt`, `sitemap.xml`, `.well-known/`.
 
 ---
 
 ## 🎨 Theme & Style System
-- Tailwind CSS v4 is configured with a class-based dark mode selector in `src/app/[locale]/globals.css`.
-- Semantic CSS variables (e.g. `--background`, `--foreground`) are bound to Tailwind variables in the `@theme` block.
-- **Guideline:** Avoid inline `dark:*` utility styles. Use semantic token classes like `bg-background-primary` and `text-foreground-primary`.
+
+- Tailwind CSS v4 is configured in `src/index.css` via `@import "tailwindcss";`.
+- Theming is **attribute-based**, not class-based: the `data-theme` attribute is set on the root `<html>` element by `src/context/ThemeContext.jsx` — `[data-theme="dark"]` (default) or `[data-theme="light"]`.
+- Semantic CSS custom properties are defined in `:root`, `[data-theme="dark"]` and `[data-theme="light"]`. There is **no `@theme` block** and **no `dark:` variant utilities**.
+
+  | Token | Purpose |
+  | :--- | :--- |
+  | `--bg` | Page background |
+  | `--surface` | Primary card / modal background |
+  | `--surface2` | Secondary surface, modal backdrop |
+  | `--surface3` | Hover states, elevated items |
+  | `--border` / `--border-subtle` | Standard and subtle borders |
+  | `--brand-orange` / `--brand-orange-hover` | Primary brand accent and its hover state |
+  | `--accent` | AOSSIE gold accent |
+  | `--text` / `--text2` / `--text3` | Primary, secondary and muted text |
+  | `--green` / `--red` / `--blue` / `--amber` / `--purple` | Status accents |
+
+- **Guideline:** never hardcode palette utilities (`text-zinc-400`, `bg-orange-500/10`, `text-white`). Use the CSS-variable shorthand: `bg-(--surface)`, `text-(--text2)`, `border-(--brand-orange)`, and the status tokens `text-(--green)` / `text-(--red)`.
+- Typography: `--font-heading` (Fraunces serif) for headings, `--font-body` (Instrument Sans) for body and controls.
 
 ---
 
-## 🌐 Dynamic Localization
-- All navigation must import `Link`, `useRouter`, or `usePathname` from local `src/i18n/navigation.ts`.
-- Page and Layout props `params` are Promises in Next.js 15/16 and must be awaited:
-  ```typescript
-  const { locale } = await params;
-  ```
+## 🌐 Server Routing & Connection Contract
+
+The landing page never talks to a backend itself. It validates the visitor's URL and redirects the browser to the DebateAI web app with the backend encoded in a query parameter.
+
+- `src/lib/connect.js` exports:
+  - `WEBAPP_URL` — `https://debateai.aossie.org` (the DebateAI web app host).
+  - `TRY_IT_OUT_URL` — `https://debateai.aossie.org/?server=official` (the official managed server sentinel).
+  - `normalize(raw)` — trims the input, parses it with `new URL()`, requires `https:` (plain `http:` is allowed **only** for `localhost` and `127.0.0.1`), rejects `javascript:`, `data:`, `file:` and `ftp:`, and returns the normalised **origin**.
+  - `connectToServer(raw)` — normalises the input and redirects to `${WEBAPP_URL}/?server=${encodeURIComponent(origin)}`.
+- The `?server=` value is always a percent-encoded absolute origin, or the literal `official` sentinel.
 
 ---
 
-## 📦 Build Commands
-- **Build:** `npm run build`
-- **Develop:** `npm run dev`
+## 🧪 Commands
+
+- **Develop:** `npm run dev` (Vite dev server, default port `5173`)
+- **Build:** `npm run build` (static output in `dist/`)
+- **Preview:** `npm run preview`
+- **Lint:** `npm run lint` (ESLint 10, React Hooks + React Refresh plugins)
+- **Test:** `npm test` (Vitest)
+
+Tests live in `src/**/__tests__/` and cover URL normalisation, local persistence, the public site metadata, and a guard that rejects malformed or hardcoded Tailwind class strings in `src/`.
+
+---
+
+## 🏛️ Organisation
+
+Maintained by **AOSSIE** (Australian Open Source Software Innovation and Education) — a non-profit organisation building impactful open-source software and mentoring contributors.
