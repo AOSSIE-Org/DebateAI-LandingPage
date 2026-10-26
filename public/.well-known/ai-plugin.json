@@ -1,18 +1,18 @@
 {
   "schema_version": "v1",
-  "name_for_human": "TODO Project name (AOSSIE Webpage Starter)",
-  "name_for_model": "todo_project_name (aossie_webpage_starter)",
-  "description_for_human": "TODO Project description (AOSSIE Webpage Starter)",
-  "description_for_model": "Retrieve settings, theme configuration, and supported locales from the TODO: Project (AOSSIE webpage starter).",
+  "name_for_human": "DebateAI (AOSSIE)",
+  "name_for_model": "debateai_aossie",
+  "description_for_human": "DebateAI is an open-source, AI-enhanced real-time debating platform by AOSSIE. Debate other people or an AI agent and have your arguments judged by AI.",
+  "description_for_model": "DebateAI is an open-source, AI-enhanced real-time debating platform by AOSSIE. Visitors play on the official managed server, connect to any community or self-hosted backend, or follow a Docker Compose deployment guide. This site is a static Vite + React landing page that redirects to the DebateAI web app with the chosen backend encoded in the ?server= query parameter.",
   "auth": {
     "type": "none"
   },
   "api": {
     "type": "openapi",
-    "url": "https://TODO:project.aossie.org/openapi.yaml",
+    "url": "https://debateai.aossie.org/openapi.yaml",
     "is_user_authenticated": false
   },
-  "logo_url": "https://TODO:project.aossie.org/brand/icons/aossie_logo.svg",
+  "logo_url": "https://hub.debateai.aossie.org/brand/icons/debateai_logo.svg",
   "contact_email": "admin@aossie.org",
-  "legal_info_url": "https://TODO:project.aossie.org/legal"
+  "legal_info_url": "https://github.com/AOSSIE-Org/DebateAI-LandingPage/blob/main/COPYRIGHT.md"
 }

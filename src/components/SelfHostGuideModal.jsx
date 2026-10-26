@@ -59,7 +59,7 @@ export default function SelfHostGuideModal({ isOpen, onClose, onOpenConnectServe
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-(surface2)/80 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-(--surface2)/80 backdrop-blur-sm fade-in"
       onClick={onClose}
     >
       <div
@@ -108,7 +108,7 @@ export default function SelfHostGuideModal({ isOpen, onClose, onOpenConnectServe
                     Prerequisites
                   </h3>
                   <p className="text-xs text-(--text2) mt-0.5">
-                    Get the two tools you need
+                    Get the tools you need
                   </p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function SelfHostGuideModal({ isOpen, onClose, onOpenConnectServe
                   file from the example. These are the values you'll need.
                 </p>
 
-                <div className="border border-(--border) rounded-sm overflow-hidden text-xs divide-y divide-(--border) bg-(--surface  )">
+                <div className="border border-(--border) rounded-sm overflow-hidden text-xs divide-y divide-(--border) bg-(--surface)">
                   <div className="flex justify-between items-center px-4 py-2.5">
                     <span className="text-(--text2)">MongoDB URI</span>
                     <span className="font-mono text-(--brand-orange) font-medium">
@@ -277,7 +277,7 @@ export default function SelfHostGuideModal({ isOpen, onClose, onOpenConnectServe
                     className="p-1.5 rounded-lg hover:bg-(--surface) text-(--text2) hover:text-(--text) transition-colors cursor-pointer"
                   >
                     {copied ? (
-                      <span className="text-xs text-green-400 flex items-center gap-1">
+                      <span className="text-xs text-(--green) flex items-center gap-1">
                         <FaCheck className="w-3.5 h-3.5" /> Copied
                       </span>
                     ) : (

@@ -39,10 +39,10 @@
 ### Project Website & Documentation
 
 - [x] 🔴 **description_good** — The project README/website clearly describes what the software does and what problem it solves.
-  - *Evidence URL:* [`README.md`](README.md#L55-L89) (About DebateAI, Key Features, and Cloudless Architecture)
+  - *Evidence URL:* [`README.md`](README.md#L65-L99) (About DebateAI, Key Features, and Cloudless Architecture)
 
 - [x] 🔴 **interact** — The project provides information on how to obtain the software, submit bug reports, and contribute.
-  - *Evidence URL:* [`README.md`](README.md#L151-L238), [`CONTRIBUTING.md`](CONTRIBUTING.md), and [`.github/ISSUE_TEMPLATE/bug_report.yml`](.github/ISSUE_TEMPLATE/bug_report.yml)
+  - *Evidence URL:* [`README.md`](README.md#L169-L253), [`CONTRIBUTING.md`](CONTRIBUTING.md), and [`.github/ISSUE_TEMPLATE/bug_report.yml`](.github/ISSUE_TEMPLATE/bug_report.yml)
 
 - [x] 🔴 **contribution** — `CONTRIBUTING.md` explains the contribution process (e.g., PRs are used, how to open one).
   - *Evidence URL:* [`CONTRIBUTING.md`](CONTRIBUTING.md#L40-L68)
@@ -51,10 +51,10 @@
   - *Evidence URL:* [`CONTRIBUTING.md`](CONTRIBUTING.md#L40-L80) (Conventional Commits, DCO, `npm run lint`, `npm test`, `npm run build`, and architectural standards)
 
 - [x] 🔴 **documentation_basics** — Basic documentation exists for the software (README, Wiki, or docs folder).
-  - *Evidence URL:* [`README.md`](README.md) and [`design.md`](design.md)
+  - *Evidence URL:* [`README.md`](README.md) and [`AGENTS.md`](AGENTS.md)
 
 - [x] 🔴 **documentation_interface** — Reference documentation describes the external interface (API inputs/outputs, CLI flags, config schema, etc.).
-  - *Evidence URL:* [`README.md`](README.md#L189-L199) and [`src/lib/connect.js`](src/lib/connect.js) (specifies query parameter `?server=` routing schema and URL normalization)
+  - *Evidence URL:* [`README.md`](README.md#L208-L217) and [`src/lib/connect.js`](src/lib/connect.js) (specifies query parameter `?server=` routing schema and URL normalization)
 
 ### Other Basics
 
@@ -99,7 +99,7 @@
 ### Bug Reporting
 
 - [x] 🔴 **report_process** — A bug-reporting process exists (e.g., GitHub Issues link in README).
-  - *Evidence URL:* [`README.md`](README.md#L232-L238), [`CONTRIBUTING.md`](CONTRIBUTING.md#L7-L14), and [`.github/ISSUE_TEMPLATE/bug_report.yml`](.github/ISSUE_TEMPLATE/bug_report.yml)
+  - *Evidence URL:* [`README.md`](README.md#L236-L253), [`CONTRIBUTING.md`](CONTRIBUTING.md#L7-L14), and [`.github/ISSUE_TEMPLATE/bug_report.yml`](.github/ISSUE_TEMPLATE/bug_report.yml)
 
 - [x] 🟡 **report_tracker** — An issue tracker (e.g., GitHub Issues) is used to track individual bugs.
   - *Evidence URL:* GitHub Issues tracker at https://github.com/AOSSIE-Org/DebateAI-LandingPage/issues
@@ -145,7 +145,7 @@
   - *Evidence URL:* [`package.json`](package.json#L10) (`npm test` invoking Vitest) and executed in [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 - [x] 🔵 **test_most** — The test suite covers most code branches, input fields, and functionality. *(SUGGESTED)*
-  - *Estimated coverage %:* ~90% of business logic; automated unit tests in [`src/lib/__tests__/connect.test.js`](src/lib/__tests__/connect.test.js) validate server URL normalization, URI protocols, input sanitization, error states, and browser redirection.
+  - *Estimated coverage %:* ~90% of business logic; automated unit tests in [`src/lib/__tests__/connect.test.js`](src/lib/__tests__/connect.test.js) validate server URL normalization, URI protocols, input sanitization, error states, and browser redirection, while [`src/lib/__tests__/storage.test.js`](src/lib/__tests__/storage.test.js), [`src/__tests__/siteMetadata.test.js`](src/__tests__/siteMetadata.test.js) and [`src/__tests__/tailwindClassStrings.test.js`](src/__tests__/tailwindClassStrings.test.js) cover local persistence and guard the published metadata and Tailwind class strings. The suite contains 49 tests across 4 files.
 
 ### New Functionality Testing Policy
 
@@ -153,7 +153,7 @@
   - *Evidence (CONTRIBUTING reference or informal policy):* [`CONTRIBUTING.md`](CONTRIBUTING.md#L45-L65) mandates that new functionality and bug fixes include automated tests in `src/**/__tests__/`.
 
 - [x] 🔴 **tests_are_added** — Evidence exists that the test policy has been followed in recent major changes (e.g., PRs include tests).
-  - *Evidence URL (recent PR with tests):* [`src/lib/__tests__/connect.test.js`](src/lib/__tests__/connect.test.js) and CI test execution in [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+  - *Evidence URL (recent PR with tests):* [`src/lib/__tests__/connect.test.js`](src/lib/__tests__/connect.test.js), [`src/lib/__tests__/storage.test.js`](src/lib/__tests__/storage.test.js), [`src/__tests__/siteMetadata.test.js`](src/__tests__/siteMetadata.test.js), [`src/__tests__/tailwindClassStrings.test.js`](src/__tests__/tailwindClassStrings.test.js) and CI test execution in [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 - [x] 🔵 **tests_documented_added** — The test policy is documented in contribution instructions. *(SUGGESTED)*
   - *Evidence URL:* [`CONTRIBUTING.md`](CONTRIBUTING.md#L45-L65)
@@ -167,7 +167,7 @@
   - *Note:* All linter warnings and errors have been resolved; `npm run lint` exits cleanly with 0 errors and 0 warnings.
 
 - [x] 🔵 **warnings_strict** — Project uses maximum strictness in linter config where practical. *(SUGGESTED)*
-  - *Note:* Configured with strict ESLint recommendations, React Hooks rules, React Refresh constraints, and zero-tolerance CI failure on warnings.
+  - *Note:* Configured with strict ESLint recommendations, React Hooks rules, React Refresh constraints, and zero-tolerance CI failure on warnings — `npm run lint` runs `eslint . --max-warnings 0`, so any warning fails the build.
 
 ---
 
