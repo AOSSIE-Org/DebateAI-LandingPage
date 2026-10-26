@@ -1,0 +1,76 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+
+categories:
+  - title: "✨ Features"
+    labels:
+      - "feature"
+      - "feat"
+      - "enhancement"
+  - title: "🎨 UI & Design"
+    labels:
+      - "frontend"
+      - "ui"
+      - "design"
+      - "responsive"
+  - title: "🐛 Bug Fixes"
+    labels:
+      - "bug"
+      - "bugfix"
+      - "fix"
+  - title: "♿ Accessibility"
+    labels:
+      - "accessibility"
+      - "a11y"
+  - title: "🔍 SEO"
+    labels:
+      - "seo"
+      - "metadata"
+  - title: "📚 Documentation"
+    labels:
+      - "documentation"
+      - "docs"
+  - title: "🚀 CI/CD & Deployment"
+    labels:
+      - "ci"
+      - "ci-cd"
+      - "github-actions"
+      - "deployment"
+      - "build"
+  - title: "🧰 Maintenance"
+    labels:
+      - "chore"
+      - "maintenance"
+      - "refactor"
+      - "dependencies"
+  - title: "🔀 Other Changes"
+    labels:
+      - "*"
+
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&'
+
+template: |
+  # DebateAI Landing Page $RESOLVED_VERSION
+
+  Updates to the DebateAI marketing website, user experience,
+  accessibility, and deployment infrastructure.
+
+  ## What's Changed
+
+  $CHANGES
+
+  ## Contributors
+
+  $CONTRIBUTORS
+
+  **Full Changelog**: $COMPARE_URL
+
+exclude-labels:
+  - "skip-changelog"
+  - "no-changelog"
+  - "duplicate"
+  - "invalid"
+  - "wontfix"
+
+include-pre-releases: false
